@@ -1,0 +1,17 @@
+C:\Users\DELL 7280\source\repos\MarthaLibrary.API\MarthaLibrary.Application\bin\Debug\net6.0\MarthaLibrary.Application.deps.json
+C:\Users\DELL 7280\source\repos\MarthaLibrary.API\MarthaLibrary.Application\bin\Debug\net6.0\MarthaLibrary.Application.dll
+C:\Users\DELL 7280\source\repos\MarthaLibrary.API\MarthaLibrary.Application\bin\Debug\net6.0\MarthaLibrary.Application.pdb
+C:\Users\DELL 7280\source\repos\MarthaLibrary.API\MarthaLibrary.Application\bin\Debug\net6.0\MarthaLibrary.Domain.dll
+C:\Users\DELL 7280\source\repos\MarthaLibrary.API\MarthaLibrary.Application\bin\Debug\net6.0\MarthaLibrary.Infrastructure.dll
+C:\Users\DELL 7280\source\repos\MarthaLibrary.API\MarthaLibrary.Application\bin\Debug\net6.0\MarthaLibrary.Domain.pdb
+C:\Users\DELL 7280\source\repos\MarthaLibrary.API\MarthaLibrary.Application\bin\Debug\net6.0\MarthaLibrary.Infrastructure.pdb
+C:\Users\DELL 7280\source\repos\MarthaLibrary.API\MarthaLibrary.Application\obj\Debug\net6.0\MarthaLibrary.Application.csproj.AssemblyReference.cache
+C:\Users\DELL 7280\source\repos\MarthaLibrary.API\MarthaLibrary.Application\obj\Debug\net6.0\MarthaLibrary.Application.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\DELL 7280\source\repos\MarthaLibrary.API\MarthaLibrary.Application\obj\Debug\net6.0\MarthaLibrary.Application.AssemblyInfoInputs.cache
+C:\Users\DELL 7280\source\repos\MarthaLibrary.API\MarthaLibrary.Application\obj\Debug\net6.0\MarthaLibrary.Application.AssemblyInfo.cs
+C:\Users\DELL 7280\source\repos\MarthaLibrary.API\MarthaLibrary.Application\obj\Debug\net6.0\MarthaLibrary.Application.csproj.CoreCompileInputs.cache
+C:\Users\DELL 7280\source\repos\MarthaLibrary.API\MarthaLibrary.Application\obj\Debug\net6.0\MarthaLibrary.Application.csproj.CopyComplete
+C:\Users\DELL 7280\source\repos\MarthaLibrary.API\MarthaLibrary.Application\obj\Debug\net6.0\MarthaLibrary.Application.dll
+C:\Users\DELL 7280\source\repos\MarthaLibrary.API\MarthaLibrary.Application\obj\Debug\net6.0\refint\MarthaLibrary.Application.dll
+C:\Users\DELL 7280\source\repos\MarthaLibrary.API\MarthaLibrary.Application\obj\Debug\net6.0\MarthaLibrary.Application.pdb
+C:\Users\DELL 7280\source\repos\MarthaLibrary.API\MarthaLibrary.Application\obj\Debug\net6.0\ref\MarthaLibrary.Application.dll

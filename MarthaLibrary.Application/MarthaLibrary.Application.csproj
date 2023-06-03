@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Azure.Storage.Blobs" Version="12.16.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MarthaLibrary.Domain\MarthaLibrary.Domain.csproj" />
+    <ProjectReference Include="..\MarthaLibrary.Infrastructure\MarthaLibrary.Infrastructure.csproj" />
+  </ItemGroup>
+
+</Project>

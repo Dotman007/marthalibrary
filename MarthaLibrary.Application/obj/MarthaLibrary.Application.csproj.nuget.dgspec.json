@@ -1,0 +1,210 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\DELL 7280\\source\\repos\\MarthaLibrary.API\\MarthaLibrary.Application\\MarthaLibrary.Application.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\DELL 7280\\source\\repos\\MarthaLibrary.API\\MarthaLibrary.Application\\MarthaLibrary.Application.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\DELL 7280\\source\\repos\\MarthaLibrary.API\\MarthaLibrary.Application\\MarthaLibrary.Application.csproj",
+        "projectName": "MarthaLibrary.Application",
+        "projectPath": "C:\\Users\\DELL 7280\\source\\repos\\MarthaLibrary.API\\MarthaLibrary.Application\\MarthaLibrary.Application.csproj",
+        "packagesPath": "C:\\Users\\DELL 7280\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\DELL 7280\\source\\repos\\MarthaLibrary.API\\MarthaLibrary.Application\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\DELL 7280\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "C:\\Users\\DELL 7280\\source\\repos\\MarthaLibrary.API\\MarthaLibrary.Domain\\MarthaLibrary.Domain.csproj": {
+                "projectPath": "C:\\Users\\DELL 7280\\source\\repos\\MarthaLibrary.API\\MarthaLibrary.Domain\\MarthaLibrary.Domain.csproj"
+              },
+              "C:\\Users\\DELL 7280\\source\\repos\\MarthaLibrary.API\\MarthaLibrary.Infrastructure\\MarthaLibrary.Infrastructure.csproj": {
+                "projectPath": "C:\\Users\\DELL 7280\\source\\repos\\MarthaLibrary.API\\MarthaLibrary.Infrastructure\\MarthaLibrary.Infrastructure.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "Azure.Storage.Blobs": {
+              "target": "Package",
+              "version": "[12.16.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.400\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\DELL 7280\\source\\repos\\MarthaLibrary.API\\MarthaLibrary.Domain\\MarthaLibrary.Domain.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\DELL 7280\\source\\repos\\MarthaLibrary.API\\MarthaLibrary.Domain\\MarthaLibrary.Domain.csproj",
+        "projectName": "MarthaLibrary.Domain",
+        "projectPath": "C:\\Users\\DELL 7280\\source\\repos\\MarthaLibrary.API\\MarthaLibrary.Domain\\MarthaLibrary.Domain.csproj",
+        "packagesPath": "C:\\Users\\DELL 7280\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\DELL 7280\\source\\repos\\MarthaLibrary.API\\MarthaLibrary.Domain\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\DELL 7280\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "Microsoft.AspNetCore.Http.Features": {
+              "target": "Package",
+              "version": "[5.0.17, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.400\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\DELL 7280\\source\\repos\\MarthaLibrary.API\\MarthaLibrary.Infrastructure\\MarthaLibrary.Infrastructure.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\DELL 7280\\source\\repos\\MarthaLibrary.API\\MarthaLibrary.Infrastructure\\MarthaLibrary.Infrastructure.csproj",
+        "projectName": "MarthaLibrary.Infrastructure",
+        "projectPath": "C:\\Users\\DELL 7280\\source\\repos\\MarthaLibrary.API\\MarthaLibrary.Infrastructure\\MarthaLibrary.Infrastructure.csproj",
+        "packagesPath": "C:\\Users\\DELL 7280\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\DELL 7280\\source\\repos\\MarthaLibrary.API\\MarthaLibrary.Infrastructure\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\DELL 7280\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "C:\\Users\\DELL 7280\\source\\repos\\MarthaLibrary.API\\MarthaLibrary.Domain\\MarthaLibrary.Domain.csproj": {
+                "projectPath": "C:\\Users\\DELL 7280\\source\\repos\\MarthaLibrary.API\\MarthaLibrary.Domain\\MarthaLibrary.Domain.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[6.0.2, )"
+            },
+            "Microsoft.EntityFrameworkCore.Relational": {
+              "target": "Package",
+              "version": "[6.0.2, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[6.0.2, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.400\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
