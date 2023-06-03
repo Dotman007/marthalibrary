@@ -11,11 +11,15 @@ namespace MarthaLibrary.Domain.Constant
         RESERVED =1,
         BORROWED=2,
         AVAILABLE=3,
+        SENT = 5,
     }
 
     public enum ReservationStatus
     {
-        BORROWED=1,
-        RETURNED =2,
+        RESERVED = 1,
+        BORROWED = 2,
+        AVAILABLE = 3,
+        RETURNED = 4,
+        
     }
 }

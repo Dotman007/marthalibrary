@@ -1,4 +1,5 @@
 ﻿using MarthaLibrary.Domain.Constant;
+using MarthaLibrary.Domain.Entities;
 using MarthaLibrary.Domain.Utility;
 using Microsoft.AspNetCore.Http;
 using System;
@@ -27,6 +28,11 @@ namespace MarthaLibrary.Domain.Dto
         public string Id { get; set; }
         public DateTime ReturnDate { get; set; }
         public string BorrowerName { get; set; }
+    }
+    public class BookingNotification
+    {
+        public string CustomerId { get; set; }
+        public Book Book { get; set; }
     }
     public class BookResponseDto
     {

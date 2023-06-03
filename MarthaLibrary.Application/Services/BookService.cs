@@ -7,12 +7,6 @@ using MarthaLibrary.Domain.Entities;
 using MarthaLibrary.Domain.Utility;
 using MarthaLibrary.Infrastructure.DataAccessLayer;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace MarthaLibrary.Application.Services
 {
@@ -73,13 +67,14 @@ namespace MarthaLibrary.Application.Services
             }
         }
 
-        public async Task<BookResponseDto> ReserveBook(string id)
+        public async Task<BookResponseDto> ReserveBook(ReserveBookRequestDto reserverr)
         {
             try
             {
-                var getBook = await _context.Books.Where(e => e.Id == id).FirstOrDefaultAsync();
+                var getBook = await _context.Books.Where(e => e.Id == reserverr.Id).FirstOrDefaultAsync();
                 if (getBook == null)
                 {
+                    
                     return new BookResponseDto
                     {
                         ResponseMessage = ResponseMapping.NoRecordResponseMessage,
@@ -89,6 +84,12 @@ namespace MarthaLibrary.Application.Services
 
                 if (getBook.BookStatus == Status.RESERVED && getBook.NumberOfCopies < 1)
                 {
+
+                    await QueuePendingBooks(new BookingNotification
+                    {
+                        Book = getBook,
+                        CustomerId = reserverr.BorrowerName
+                    });
                     return new BookResponseDto
                     {
                         ResponseMessage = ResponseMapping.BookReservedResponseMessage,
@@ -99,6 +100,11 @@ namespace MarthaLibrary.Application.Services
 
                 if (getBook.BookStatus == Status.BORROWED  && getBook.NumberOfCopies < 1)
                 {
+                    await QueuePendingBooks(new BookingNotification
+                    {
+                        Book = getBook,
+                        CustomerId = reserverr.BorrowerName
+                    });
                     return new BookResponseDto
                     {
                         ResponseMessage = ResponseMapping.BookBorrowedResponseMessage,
@@ -112,6 +118,7 @@ namespace MarthaLibrary.Application.Services
                     CreatedBy = "",
                     DateCreated = DateTime.Now,
                     ExpiryDate = DateTime.Now.AddHours(24),
+                    ReservationStatus =  ReservationStatus.RESERVED
                 };
 
                 await _context.Reservations.AddAsync(reserve);
@@ -151,6 +158,11 @@ namespace MarthaLibrary.Application.Services
 
                 if (getBook.BookStatus == Status.RESERVED && getBook.NumberOfCopies < 1 )
                 {
+                    await QueuePendingBooks(new BookingNotification
+                    {
+                        Book = getBook,
+                        CustomerId = reserves.BorrowerName
+                    });
                     return new BookResponseDto
                     {
                         ResponseMessage = ResponseMapping.BookReservedResponseMessage,
@@ -161,6 +173,11 @@ namespace MarthaLibrary.Application.Services
 
                 if (getBook.BookStatus == Status.BORROWED && getBook.NumberOfCopies < 1)
                 {
+                    await QueuePendingBooks(new BookingNotification
+                    {
+                        Book = getBook,
+                        CustomerId = reserves.BorrowerName
+                    });
                     return new BookResponseDto
                     {
                         ResponseMessage = ResponseMapping.BookBorrowedResponseMessage,
@@ -247,6 +264,8 @@ namespace MarthaLibrary.Application.Services
             try
             {
                 var getBook = await _context.Reservations.Include(e=>e.Book).Where(e => e.Id ==id).FirstOrDefaultAsync();
+                var getBooks = await _context.Books.Where(e => e.Id == getBook.Book.Id).FirstOrDefaultAsync();
+
                 if (getBook == null)
                 {
                     return new BookResponseDto
@@ -257,6 +276,7 @@ namespace MarthaLibrary.Application.Services
                 }
                 if (getBook.ReservationStatus == ReservationStatus.RETURNED)
                 {
+                   
                     return new BookResponseDto
                     {
                         ResponseMessage = ResponseMapping.AlreadyReturnedResponseMessage,
@@ -264,10 +284,12 @@ namespace MarthaLibrary.Application.Services
                     };
                 }
                 getBook.ReservationStatus = ReservationStatus.RETURNED;
-                var getBooks = await _context.Books.Where(e => e.Id == getBook.Book.Id).FirstOrDefaultAsync();
                 getBooks.NumberOfCopies += 1;
                 getBooks.BookStatus =  Status.AVAILABLE;
                 await _context.SaveChangesAsync();
+                var book = await _context.PendingBookss.FirstOrDefaultAsync(e => e.Book.Id == getBook.Book.Id);
+                await SendNotification(new BookingNotification { CustomerId = book.CustomerId, Book = getBooks });
+
                 return new BookResponseDto
                 {
                     ResponseCode = ResponseMapping.SuccessResponseCode,
@@ -275,6 +297,78 @@ namespace MarthaLibrary.Application.Services
                 };
             }
             catch (Exception ex)
+            {
+
+                throw;
+            }
+        }
+
+        public void CheckReservedExpiry()
+        {
+            var allBooks = _context.Reservations.Include(x=>x.Book).Where(e => e.ReservationStatus == ReservationStatus.RESERVED && e.ExpiryDate.Value.Date <= DateTime.Now.Date).ToList();
+            
+            if (allBooks != null)
+            {
+                foreach (var item in allBooks)
+                {
+                    var getBook = _context.Books.Where(s => s.Id == item.Book.Id).FirstOrDefault();
+                    getBook.NumberOfCopies += 1;
+                    getBook.BookStatus = Status.AVAILABLE;
+                    _context.SaveChanges();
+                }
+                _context.Reservations.RemoveRange(allBooks);
+                _context.SaveChanges();
+
+            }
+        }
+
+        public async Task<BookResponseDto> SendNotification(BookingNotification booking)
+        {
+            try
+            {
+                var notify = await _context.Notifications.AddAsync(new Notification
+                {
+                    Book = booking.Book,
+                    CreatedBy = "",
+                    CustomerId = booking.CustomerId,
+                    Status = Status.SENT
+                });
+                //
+                var getQueue = await _context.PendingBookss.Where(s => s.Book.Id == booking.Book.Id && s.CustomerId == booking.CustomerId).FirstOrDefaultAsync();
+                _context.PendingBookss.Remove(getQueue);
+                await _context.SaveChangesAsync();
+
+                return new BookResponseDto
+                {
+                    ResponseCode = ResponseMapping.SuccessResponseCode,
+                    ResponseMessage = ResponseMapping.SuccessResponseMessage
+                };
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        public async Task<BookResponseDto> QueuePendingBooks(BookingNotification booking)
+        {
+            try
+            {
+                var notify = await _context.PendingBookss.AddAsync(new PendingBook
+                {
+                    Book = booking.Book,
+                    CreatedBy = "",
+                    CustomerId = booking.CustomerId,
+                });
+                await _context.SaveChangesAsync();
+                return new BookResponseDto
+                {
+                    ResponseCode = ResponseMapping.SuccessResponseCode,
+                    ResponseMessage = ResponseMapping.SuccessResponseMessage
+                };
+            }
+            catch (Exception)
             {
 
                 throw;

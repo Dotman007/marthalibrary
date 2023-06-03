@@ -8,13 +8,16 @@ using System.Threading.Tasks;
 
 namespace MarthaLibrary.Application.Interface
 {
-    public interface IBookService
+    public interface IBookService 
     {
         Task<BookResponseDto> CreateBook(BookRequestDto bookRequestDto, ImageDto image);
-        Task<BookResponseDto> ReserveBook(string id);
+        Task<BookResponseDto> ReserveBook(ReserveBookRequestDto reserves);
         Task<BookResponseDto> ReturnBook(string id);
         Task<BookResponseDto> BorrowBook(ReserveBookRequestDto reserves);
         Task<List<AllBookResponseDto>> GetAllBooks();
         Task<List<AllBookResponseDto>> GetBook(string search);
+        void CheckReservedExpiry();
+        Task<BookResponseDto> SendNotification(BookingNotification booking);
+        Task<BookResponseDto> QueuePendingBooks(BookingNotification booking);
     }
 }

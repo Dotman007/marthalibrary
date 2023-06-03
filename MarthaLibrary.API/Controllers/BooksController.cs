@@ -44,9 +44,9 @@ namespace MarthaLibrary.API.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> ReserveBook(string id)
+        public async Task<IActionResult> ReserveBook(ReserveBookRequestDto book)
         {
-            var response = await _service.ReserveBook(id);
+            var response = await _service.ReserveBook(book);
             return Ok(response);
         }
 
