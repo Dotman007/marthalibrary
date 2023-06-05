@@ -22,4 +22,10 @@ namespace MarthaLibrary.Domain.Constant
         RETURNED = 4,
         
     }
+
+    public enum Role
+    {
+        Admin,
+        User
+    }
 }

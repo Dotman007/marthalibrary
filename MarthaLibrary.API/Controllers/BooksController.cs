@@ -1,6 +1,7 @@
 ﻿using MarthaLibrary.Application.Interface;
 using MarthaLibrary.Domain.Dto;
 using MarthaLibrary.Domain.Utility;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -18,8 +19,8 @@ namespace MarthaLibrary.API.Controllers
             _service = service;
         }
 
-
         [HttpPost]
+        [Authorize(Roles= "Admin")]
         public async Task<IActionResult> CreateBook([FromForm]BookRequestDto book)
         {
             if (!ModelState.IsValid)

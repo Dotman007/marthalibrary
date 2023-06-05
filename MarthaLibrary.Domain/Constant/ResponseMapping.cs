@@ -26,5 +26,8 @@ namespace MarthaLibrary.Domain.Constant
 
         public static string ErrorResponseCode = "99";
         public static string ErrorResponseMessage = "an error occurred";
+
+        public static string InvalidCredentialsResponseCode = "37";
+        public static string InvalidCredentialsResponseMessage = "Invalid username or password";
     }
 }
